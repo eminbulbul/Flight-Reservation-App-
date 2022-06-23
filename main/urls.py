@@ -13,7 +13,8 @@ schema_view = get_schema_view(
         default_version="v1",
         description="Flight Reservation API project provides flight and reservation info",
         terms_of_service="#",
-        contact=openapi.Contact(email="rafe@clarusway.com"),  # Change e-mail on this line!
+        # Change e-mail on this line!
+        contact=openapi.Contact(email="rafe@clarusway.com"),
         license=openapi.License(name="BSD License"),
     ),
     public=True,
@@ -25,8 +26,14 @@ urlpatterns = [
     path("admin/", admin.site.urls),
 
     # Url paths for swagger:
-    path("swagger(<format>\.json|\.yaml)", schema_view.without_ui(cache_timeout=0), name="schema-json"),
-    path("swagger/", schema_view.with_ui("swagger", cache_timeout=0), name="schema-swagger-ui"),
-    path("redoc/", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
+    path("swagger(<format>\.json|\.yaml)", schema_view.without_ui(
+        cache_timeout=0), name="schema-json"),
+    path("swagger/", schema_view.with_ui("swagger",
+         cache_timeout=0), name="schema-swagger-ui"),
+    path("redoc/", schema_view.with_ui("redoc",
+         cache_timeout=0), name="schema-redoc"),
     path('__debug__/', include('debug_toolbar.urls')),
+
+    # apps
+    path("users/", include("users.urls"))
 ]
