@@ -25,6 +25,8 @@ SECRET_KEY = config('SECRET_KEY')
 
 # Application definition
 
+DEBUG = config('DEBUG')
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
